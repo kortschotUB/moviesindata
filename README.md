@@ -1,4 +1,4 @@
-![mid logo](assets/logo.png)
+![mid logo](assets/logo_alt.png width=430 height=200)
 
 **Description:**
 This contains raw data and source code for work on the [movies in data substack](https://moviesindata.substack.com/)
