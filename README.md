@@ -1,5 +1,5 @@
-<div style="width: 430; height: 200px;">
-  <img src="assets/logo_alt.png" alt="mid_logo">
+<div>
+  <img src="assets/logo_alt.png" alt="mid_logo" width="430" height="200">
 </div>
 
 **Description:**
