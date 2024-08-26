@@ -1,0 +1,6 @@
+.env
+
+mid/*
+data/*
+notebooks/findData.ipynb
+notebooks/exploration.ipynb
