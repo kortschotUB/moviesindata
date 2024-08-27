@@ -1,0 +1,47 @@
+### FIGURE
+figure.facecolor: fffbeb
+figure.dpi: 200
+figure.titlesize: 14
+figure.titleweight: light
+figure.figsize: 8, 4  # Width, Height in inches
+
+### LINES
+lines.linewidth: .5
+lines.color: 363433
+lines.markersize: 1
+
+### PATCHES
+patch.facecolor: 363433
+patch.edgecolor: 363433
+patch.antialiased: True
+
+
+### LEGEND
+legend.fontsize: 10
+
+### TICKS
+xtick.direction: out
+ytick.direction: out
+
+### FONTS
+font.family: sans-serif
+font.sans-serif: Helvetica, sans-serif
+font.weight: light
+font.size: 10
+text.color: 363433
+
+### AXES
+axes.grid: False
+axes.facecolor: fffbeb
+axes.linewidth: .5
+axes.titlesize: 10
+axes.titleweight: light
+axes.labelsize: 10
+axes.labelweight: light
+axes.spines.top: True
+axes.spines.right: True
+axes.prop_cycle: cycler('color', ['363433', '348ABD', '988ED5', '777777', 'FBC15E', '8EBA42', 'FFB5B8'])
+
+
+### SCATTER
+scatter.marker: o

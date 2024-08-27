@@ -1,13 +1,13 @@
 
 import json
 import numpy as np
-from sklearn import preprocessing
 import itertools
-import statsmodels.api as sm
 from dotenv import load_dotenv
 import traceback
 load_dotenv(dotenv_path='../.env')
 import sys
+import string as stringLib
+
 
 def exceptionOutput(e, p=True, tb=False, **kwargs):
     """ Exception Output
@@ -43,38 +43,40 @@ def prettyPrint(jsonObj: dict) -> None:
 
     print(json.dumps(jsonObj, indent=4, sort_keys=False, default=np_encoder), end='')
 
-def linearModelGeneral(X: list, y: list, degrees = [1,2,3]) -> dict:
-    """ Linear Model General
-    - Takes a list of x and y
-    - Loops through the degrees specified in the degrees argument 
-    - Returns the result that has the highest r2 value
+def titleify(string: str) -> str:
+    """ Titleify
+    
+        - Converts a string to a title
+        - e.g., you were sad today -> You Were Sad Today
+    
     """
-    resultsDict = {}
+    words = string.split(' ')
+    title = ''
 
-    # Reshape X if one-d
-    if(len(X.shape)<2):
-        X = X[:,np.newaxis]
+    for word in words:
+        cap = word[0:1].upper()
+        rest = word[1:]
+        full = cap + rest
+        title += full + ' '
 
-    for degree in degrees:
-        resultsDictTemp = {}
-        polynomial_features = preprocessing.PolynomialFeatures(degree=degree)
+    return title.rstrip()
 
-        X_poly = polynomial_features.fit_transform(X)
-        model = sm.OLS(y, X_poly).fit()
-        ypred = np.array(model.predict(X_poly))
+def sentenceify(string: str) -> str:
+    """ Sentenceify
+    
+        - Converts a string to a sentence
+        - e.g., you were sad today -> You were sad today.
+    
+    """
+    start = string[0].upper()
+    middle = string[1:-1]
+    end = string[-1]
 
-        resultsDictTemp['X'] = list(itertools.chain(*X))
-        resultsDictTemp['p'] = model.f_pvalue
-        resultsDictTemp['F'] = model.fvalue
-        resultsDictTemp['r2'] = model.rsquared
-        resultsDictTemp['params'] = model.params
-        resultsDictTemp['ypred'] = list(ypred)
-        resultsDictTemp['degree'] = degree
+    if end in stringLib.punctuation:
+        fin = end
+    else:
+        fin = end + '.'
 
-        if(len(resultsDict)==0):
-            resultsDict = resultsDictTemp
-        else:
-            if(resultsDictTemp['r2']>resultsDict['r2']):
-                resultsDict = resultsDictTemp
+    sentence = start + middle + fin
 
-    return resultsDict
+    return sentence
