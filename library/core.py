@@ -7,6 +7,7 @@ import traceback
 load_dotenv(dotenv_path='../.env')
 import sys
 import string as stringLib
+import math
 
 
 def exceptionOutput(e, p=True, tb=False, **kwargs):
@@ -80,3 +81,25 @@ def sentenceify(string: str) -> str:
     sentence = start + middle + fin
 
     return sentence
+
+def createSlidingWindows(l=[], windowSize=5, startDex=0, overlap=0, **kwargs):
+    """ Create Sliding Windows
+    
+        - Divides a long list into a series of sublists in order to process things in batches typically
+    
+    """
+    nWindows = math.ceil(len(l)/windowSize)
+
+    outputL = []
+
+    for i in range(nWindows):
+        end = min(startDex + windowSize, len(l))
+        sample = l[startDex:end]
+        
+        if len(sample) > 0:
+            outputL.append(sample)
+            startDex+=windowSize
+        else:
+            break
+    
+    return outputL
