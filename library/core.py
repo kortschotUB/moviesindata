@@ -8,7 +8,7 @@ load_dotenv(dotenv_path='../.env')
 import sys
 import string as stringLib
 import math
-
+import re
 
 def exceptionOutput(e, p=True, tb=False, **kwargs):
     """ Exception Output
@@ -103,3 +103,18 @@ def createSlidingWindows(l=[], windowSize=5, startDex=0, overlap=0, **kwargs):
             break
     
     return outputL
+
+
+def extractBetween(text: str, start: str, end: str):
+    # Use a regex pattern to extract everything between start and end
+    pattern = re.escape(start) + r'(.*?)' + re.escape(end)
+    match = re.search(pattern, text)
+    return match.group(1) if match else None
+
+
+def extractElementsInOrder(text, elements):
+    # Create a regex pattern to match any of the elements
+    pattern = re.compile('|'.join(map(re.escape, elements)))
+    # Find all matches in the text
+    matches = pattern.findall(text)
+    return matches
