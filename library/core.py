@@ -9,6 +9,7 @@ import sys
 import string as stringLib
 import math
 import re
+from typing import Generator
 
 def exceptionOutput(e, p=True, tb=False, **kwargs):
     """ Exception Output
@@ -118,3 +119,55 @@ def extractElementsInOrder(text, elements):
     # Find all matches in the text
     matches = pattern.findall(text)
     return matches
+
+#| export
+def flattenWithGenerator(lst: list) -> Generator:
+    """ Flatten With Generator
+    
+        - Flattens a list of arbitrary depth
+        - Yields a generator
+    
+    """
+    
+    for item in lst:
+        if isinstance(item, list):
+            yield from flattenWithGenerator(item)
+        else:
+            yield item
+
+def tripletSearchWithYear(target: list, candidates: list) -> str:
+    """ Triplet search
+    
+        - Uses a chunk based search algorithm to search for a target against a list of candidates
+        - This includes a year for final filtering:
+            - target and candidates take the form of list of dicts, each with keys title and year
+            e.g., [{'title':'Drive','year':2011}]
+    """
+    scores = {}
+
+    def getChunks(str, chunkSize=3):
+        chunks = [] 
+        for i in range(len(str)):
+            chunk = str[i:i+chunkSize]
+            if len(chunk)==chunkSize:
+                chunks.append(chunk)
+        
+        return chunks
+
+    targetChunks = getChunks(target['title'])
+
+    for candidate in candidates:
+        candidateChunks = getChunks(candidate['title'].lower())
+        
+        intersection = [chunk for chunk in candidateChunks if chunk in targetChunks]
+        intersectionScore = len(intersection)/len(candidateChunks)
+        
+        if intersectionScore >= .5:
+            scores[candidate['title']] = intersectionScore
+
+            
+
+    if len(scores) > 0:
+        return max(scores, key=scores.get)
+    else:
+        return 'NO CANDIDATE WAS FOUND'

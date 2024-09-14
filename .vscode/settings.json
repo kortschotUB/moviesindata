@@ -1,2 +1,5 @@
 {
+    "editor.scrollBeyondLastLine": true
+    "workbench.colorTheme": "Noctis Obscuro",
+    // "workbench.colorTheme": "Noctis Lux",
 }

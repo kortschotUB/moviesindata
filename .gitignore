@@ -2,6 +2,6 @@
 
 mid/*
 data/*
-notebooks/findData.ipynb
+processingNotebooks/findData.ipynb
 notebooks/exploration.ipynb
 playground/*

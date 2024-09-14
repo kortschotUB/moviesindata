@@ -45,3 +45,4 @@ axes.prop_cycle: cycler('color', ['363433', '348ABD', '988ED5', '777777', 'FBC15
 
 ### SCATTER
 scatter.marker: o
+scatter.alpha: .5
