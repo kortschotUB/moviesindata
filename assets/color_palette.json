@@ -1,6 +1,20 @@
 {
     "annotation":"#ff6719",
     "canvas": "#fffbeb",
+    "canvas_dark": "#c9baa9",
     "grey_light":"#4a4847",
-    "grey_dark":"#918F8E"
+    "grey_dark":"#918F8E",
+    "blue_grey":"#96c8c8",
+    "strawberry":"#fa0000",
+    "blue_grey_dark":"#005a5a",
+    "pink":"#fa78b4",
+    "cherry":"#fa5000",
+    "grape":"#784b96",
+    "lemon":"#ffbe00",
+    "lime":"#afbe5a",
+    "lavender":"#c89696",
+    "teal":"#78fae0",
+    "blueberry":"#005afa",
+    "watermelon":"#fa78fa",
+    "orange":"#fa9600"
 }

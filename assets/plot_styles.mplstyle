@@ -40,9 +40,8 @@ axes.labelsize: 10
 axes.labelweight: light
 axes.spines.top: True
 axes.spines.right: True
-axes.prop_cycle: cycler('color', ['363433', '348ABD', '988ED5', '777777', 'FBC15E', '8EBA42', 'FFB5B8'])
+axes.prop_cycle: cycler('color', ['96c8c8','fa0000','005a5a','fa78b4','fa5000','784b96','ffbe00','afbe5a','c89696','78fae0','005afa','fa78fa','fa9600'])
 
 
 ### SCATTER
 scatter.marker: o
-scatter.alpha: .5

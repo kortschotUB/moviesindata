@@ -83,23 +83,26 @@ def sentenceify(string: str) -> str:
 
     return sentence
 
-def createSlidingWindows(l=[], windowSize=5, startDex=0, overlap=0, **kwargs):
+
+def createSlidingWindows(l=[], windowSize=5, overlap=0):
     """ Create Sliding Windows
     
         - Divides a long list into a series of sublists in order to process things in batches typically
     
     """
-    nWindows = math.ceil(len(l)/windowSize)
+    step = windowSize - overlap
+    nWindows = math.ceil((len(l) - overlap) / step)
 
     outputL = []
 
+    startDex = 0
     for i in range(nWindows):
         end = min(startDex + windowSize, len(l))
         sample = l[startDex:end]
         
         if len(sample) > 0:
             outputL.append(sample)
-            startDex+=windowSize
+            startDex += step
         else:
             break
     
