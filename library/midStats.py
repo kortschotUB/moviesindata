@@ -3,6 +3,8 @@ import numpy as np
 from sklearn import preprocessing
 import statsmodels.api as sm
 import itertools
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
 def dropNumericalOutliers(
     x: pd.Series, # PD series to drop outliers in
@@ -83,3 +85,19 @@ def linearModelGeneral(X: list, y: list, degrees = [1,2,3]) -> dict:
                 resultsDict = resultsDictTemp
 
     return resultsDict
+
+def cosSimWords(s1, s2, analyzer: str = 'word', ngram_range: tuple = (3,3), justBool: bool = True, thresh: float = .66):
+    vectorizer = TfidfVectorizer(analyzer=analyzer, ngram_range=ngram_range).fit([s1, s2]) # doing this on the word level
+    vectors = vectorizer.transform([s1, s2])
+    
+    title_score = cosine_similarity(vectors[0], vectors[1])[0][0]
+    
+    if title_score > thresh:
+        match = True
+    else:
+        match = False
+
+    if justBool:
+        return match
+    else:
+        return title_score

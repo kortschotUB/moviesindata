@@ -1,5 +1,6 @@
 {
     "editor.scrollBeyondLastLine": true
-    // "workbench.colorTheme": "Noctis Obscuro",
-    "workbench.colorTheme": "Noctis Lux",
+    "workbench.colorTheme": "Noctis Obscuro",
+    // "workbench.colorTheme": "Noctis Lux",
+    "workbench.customizations.css": "~/dialog.css"
 }
