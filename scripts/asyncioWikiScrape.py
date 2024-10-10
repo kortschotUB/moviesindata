@@ -55,8 +55,10 @@ async def returnWikiURL(imdbId: str) -> str:
         results = str(e)
         requestGood = False
 
+    print(results)
+
     if requestGood:
-        return results['results']['bindings'][0]['wppage']['value'
+        return results['results']['bindings'][0]['wppage']['value']
     else:
         return ""
 
@@ -72,6 +74,8 @@ async def requestData(wiki_wiki, imdbId, limiter, iteration):
 
             plotText = str(wikiPage.sections[0]) # Plot tends to be the first section for movies... will likely need some error handling here + maybe a check to see if title is called plot
             
+            print(plotText)
+
             r9.set(imdbId, json.dumps(plotText))
         
         except Exception as e:
@@ -91,9 +95,13 @@ async def main():
 
     wiki_wiki = wikipediaapi.Wikipedia('Project: Testproject', 'en')
 
-    with open('../data/horrorIds.json') as f:
-        imdbIdsRaw = json.load(f)
+    # with open('../data/horrorIds.json') as f:
+    #     imdbIdsRaw = json.load(f)
             
+
+    imdbIdsRaw = ['tt30057084']
+
+    
     print(f"NUMBER OF imdbIds : {len(imdbIdsRaw)}")
 
     # Return redis keys to filter out what is in redis

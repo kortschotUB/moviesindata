@@ -75,7 +75,7 @@ async def processWindow(urls: list):
     
 
 # Return list of unprocessed Ids
-idFilePath = '../data/allIds.json'
+idFilePath = '../data/horror_ids_with_rbr.json'
 with open(idFilePath) as f:
     allIds = list(json.load(f))
 

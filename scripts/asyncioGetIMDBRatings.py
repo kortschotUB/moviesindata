@@ -73,7 +73,7 @@ async def processWindow(links: list):
 
 
 async def main():
-    with open('../data/allIds.json') as f:
+    with open('../data/horror_ids_with_rbr.json') as f:
         ids = json.load(f)
     
     knownIds = r5.keys('*')
